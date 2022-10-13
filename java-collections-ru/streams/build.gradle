@@ -1,0 +1,44 @@
+plugins {
+  id 'java'
+  id 'com.adarshr.test-logger' version '2.1.1'
+  id 'application'
+  id 'checkstyle'
+}
+
+repositories {
+  mavenCentral()
+}
+
+application {
+  mainClass = 'exercise.App'
+}
+
+checkstyle {
+  toolVersion = '9.2.1'
+}
+
+tasks.withType(Checkstyle) {
+  reports{
+    xml.required = false;
+    html.required = true;
+    html.stylesheet resources.text.fromFile('config/xsl/checkstyle-simple.xsl')
+  }
+}
+
+dependencies {
+  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.0-M1'
+  testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.0-M1'
+  testImplementation 'org.assertj:assertj-core:3.19.0'
+}
+
+test {
+  useJUnitPlatform()
+}
+
+testlogger {
+  showStandardStreams = true
+}
+
+tasks.withType(JavaCompile) {
+  options.encoding = "UTF-8"
+}

@@ -10,8 +10,8 @@ import java.util.List;
 public class TcpConnection implements Connection{
 
     private Connection connection;
-    private String ip;
-    private Integer port;
+    String ip;
+    Integer port;
     private List<String> data;
 
     public TcpConnection(String ip, Integer port) {
