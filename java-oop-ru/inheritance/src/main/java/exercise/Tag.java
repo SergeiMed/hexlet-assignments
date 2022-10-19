@@ -37,11 +37,7 @@ public abstract class Tag {
         stringBuilder.deleteCharAt(stringBuilder.length() - 1);
         String result = stringBuilder.toString();
         return getTagAttributes().isEmpty() ? "<" + getTagName() + ">"
-                : "<"
-                + getTagName()
-                + " "
-                + result
-                + ">";
+                : "<" + getTagName() + " " + result + ">";
     }
 }
 // END
