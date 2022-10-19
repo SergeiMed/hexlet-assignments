@@ -7,7 +7,7 @@ import java.util.List;
 // BEGIN
 public class PairedTag extends Tag {
 
-    private String tagText;
+    private final String tagText;
     List<Tag> listOfChildren;
 
     public PairedTag(String tagName, Map<String, String> tagAttributes, String tagText, List<Tag> listOfChildren) {
