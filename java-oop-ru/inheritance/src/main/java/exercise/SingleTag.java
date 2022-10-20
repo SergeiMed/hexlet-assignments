@@ -10,7 +10,7 @@ public class SingleTag extends Tag {
     }
 
     public String toString() {
-        return getTag();
+        return String.format("<%s%s>", getTagName(), getTag());
     }
 }
 // END

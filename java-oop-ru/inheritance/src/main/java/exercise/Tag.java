@@ -1,6 +1,8 @@
 package exercise;
 
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 // BEGIN
 public abstract class Tag {
@@ -22,22 +24,10 @@ public abstract class Tag {
     }
 
     public String getTag() {
-        if (tagAttributes.isEmpty()) {
-            return "<" + tagName + ">";
-        }
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Map.Entry<String, String> attribute : tagAttributes.entrySet()) {
-            stringBuilder.append(attribute.getKey())
-                    .append("=")
-                    .append("\"")
-                    .append(attribute.getValue())
-                    .append("\"")
-                    .append(" ");
-        }
-        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-        String result = stringBuilder.toString();
-        return getTagAttributes().isEmpty() ? "<" + getTagName() + ">"
-                : "<" + getTagName() + " " + result + ">";
+        Set<String> keys = getTagAttributes().keySet();
+        return keys.stream()
+                .map(key -> String.format(" %s=\"%s\"", key, getTagAttributes().get(key)))
+                .collect(Collectors.joining(""));
     }
 }
 // END
