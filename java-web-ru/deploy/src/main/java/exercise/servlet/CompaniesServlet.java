@@ -27,7 +27,8 @@ public class CompaniesServlet extends HttpServlet {
             for (String company : companies) {
                 print.println(company);
             }
-            } else { companies.stream()
+        } else {
+            companies.stream()
                 .filter(x -> x.contains(param))
                 .forEach(y -> output.add(y));
             if (output.isEmpty()) {
