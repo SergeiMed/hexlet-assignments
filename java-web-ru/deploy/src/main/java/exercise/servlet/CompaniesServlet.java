@@ -19,23 +19,23 @@ public class CompaniesServlet extends HttpServlet {
                 throws IOException, ServletException {
 
         // BEGIN
-        PrintWriter print = response.getWriter();
+        PrintWriter out = response.getWriter();
         List<String> companies = getCompanies();
-        String param = request.getParameter("search");
-        List<String> output = new ArrayList<>();
+        String searchString = request.getParameter("search");
+        List<String> searchCompanies = new ArrayList<>();
         if (request.getQueryString() == null) {
             for (String company : companies) {
-                print.println(company);
+                out.println(company);
             }
         } else {
             companies.stream()
-                .filter(x -> x.contains(param))
-                .forEach(y -> output.add(y));
-            if (output.isEmpty()) {
-                print.println("Companies not found");
+                .filter(company -> company.contains(searchString))
+                .forEach(searchCompanies::add);
+            if (searchCompanies.isEmpty()) {
+                out.println("Companies not found");
             } else {
-                for (String out : output) {
-                    print.println(out);
+                for (String searchCompany : searchCompanies) {
+                    out.println(searchCompany);
                 }
             }
         }
