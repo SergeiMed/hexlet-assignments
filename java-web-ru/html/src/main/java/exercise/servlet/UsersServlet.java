@@ -94,9 +94,9 @@ public class UsersServlet extends HttpServlet {
         for (Map<String, String> map : users) {
             if (map.get("id").equals(id)) {
                 String firstName = map.get("firstName");
-                String lastName = map. get("lastName");
+                String lastName = map.get("lastName");
                 String email = map.get("email");
-                        sb.append("""
+                sb.append("""
                     <!DOCTYPE html>
                     <html lang=\\"ru\\">
                         <head>
@@ -108,11 +108,11 @@ public class UsersServlet extends HttpServlet {
                                 <tr><td>Last name: %s</td></tr>
                                 <tr><td>First name: %s</td></tr>
                                 <tr><td>ID: %s</td></tr>
-                                <tr><td>Email: %s</td></tr>    
+                                <tr><td>Email: %s</td></tr>
                             </table>
                         </body>
                     </html>
-                    """.formatted(firstName, lastName, id, email));
+                            """.formatted(firstName, lastName, id, email));
                 response.setContentType("text/html;charset=UTF-8");
                 out.println(sb);
                 return;
