@@ -14,16 +14,10 @@ class App {
     public static Map<String, Integer> getMinMax(int[] massive) {
         MinThread minThread = new MinThread(massive);
         MaxThread maxThread = new MaxThread(massive);
-
         minThread.start();
         LOGGER.info("Thread minThread started");
         maxThread.start();
         LOGGER.info("Thread maxThread started");
-
-        Map<String, Integer> result = new HashMap<>();
-        result.put("min", minThread.getMinValue());
-        result.put("max", maxThread.getMaxValue());
-        System.out.println(result);
 
         try {
             minThread.join();
@@ -33,6 +27,11 @@ class App {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
+        Map<String, Integer> result = new HashMap<>();
+        result.put("min", minThread.getMinValue());
+        result.put("max", maxThread.getMaxValue());
+        System.out.println(result);
         return result;
     }
     // END

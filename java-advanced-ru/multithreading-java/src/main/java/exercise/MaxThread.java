@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.OptionalInt;
 
 // BEGIN
-public class MaxThread extends Thread{
+public class MaxThread extends Thread {
 
     private static int[] massive;
     private static int maxValue;

@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.OptionalInt;
 
 // BEGIN
-public class MinThread extends Thread{
+public class MinThread extends Thread {
 
     private static int[] massive;
     private static int minValue;
